@@ -8,9 +8,9 @@
 수식 : E=mc^2
 
 ### 코드
-'''python
+```python
 print('hello');
-'''
+```
 
 'inline_code();'
 
