@@ -10,7 +10,7 @@
 ### 코드
 ```python
 print('hello');
-```
+print('world!');
 
 
 
