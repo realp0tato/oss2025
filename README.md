@@ -45,8 +45,8 @@ int main()
 }
 ```
 
-![고양이](https://placekitten.com/300/200)
-[![미리보기 이미지](https://placekitten.com/300/200)](https://github.com/realp0tato)
+![유령](https://cdn.pixabay.com/photo/2023/09/13/07/29/ghost-8250317_1280.png)
+[![미리보기 이미지](https://cdn.pixabay.com/photo/2023/09/13/07/29/ghost-8250317_1280.png)](https://github.com/realp0tato)
 
 
 
