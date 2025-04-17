@@ -44,8 +44,12 @@ int main()
    return 0;
 }
 ```
+<img src="https://cdn.pixabay.com/photo/2023/09/13/07/29/ghost-8250317_1280.png" width="150">
+이미지 표시
 
 ![유령](https://cdn.pixabay.com/photo/2023/09/13/07/29/ghost-8250317_1280.png)
+이미지에 링크 삽입
+
 [![미리보기 이미지](https://cdn.pixabay.com/photo/2023/09/13/07/29/ghost-8250317_1280.png)](https://github.com/realp0tato)
 
 
