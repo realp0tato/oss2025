@@ -21,14 +21,14 @@ def load_data():
 df = load_data()
 
 # -------------------- UI --------------------
-st.title("🌏 국내 지진 발생 시각화 대시보드 (2020-2025)")
+st.title("국내 지진 발생 통계 (2020-2025)")
 
 # 날짜 필터
 date_range = st.date_input("지진 발생일 범위", [df['발생시각'].min().date(), df['발생시각'].max().date()])
 
 # 지역 필터
 광역시도_목록 = sorted(df['광역시도'].dropna().unique())
-selected_regions = st.multiselect("📍 광역시/도 선택", 광역시도_목록)
+selected_regions = st.multiselect("광역시/도 선택", 광역시도_목록)
 
 # 지진 규모 필터
 min_mag, max_mag = float(df['규모'].min()), float(df['규모'].max())
@@ -45,7 +45,7 @@ if selected_regions:
     filtered = filtered[filtered['광역시도'].isin(selected_regions)]
 
 # -------------------- 요약 통계 --------------------
-st.subheader("📌 지진 정보 요약")
+st.subheader("지진 정보 요약")
 col1, col2, col3 = st.columns(3)
 if not filtered.empty:
     col1.metric("최대 규모", f"{filtered['규모'].max():.1f}")
@@ -53,18 +53,18 @@ if not filtered.empty:
     col3.metric("발생 건수", len(filtered))
 
     top_region = filtered['광역시도'].value_counts().idxmax()
-    st.markdown(f"📍 **가장 많이 발생한 지역:** {top_region}")
+    st.markdown(f"**가장 많이 발생한 지역:** {top_region}")
 else:
     st.warning("선택한 조건에 해당하는 지진 데이터가 없습니다.")
 
 # -------------------- 규모 변화 라인 차트 --------------------
-st.subheader("📈 지진 규모 변화 추이")
+st.subheader("지진 규모 변화 추이")
 if not filtered.empty:
     line_data = filtered.sort_values("발생시각")[['발생시각', '규모']]
     st.line_chart(line_data.rename(columns={'발생시각': 'index'}).set_index('index'))
 
 # -------------------- 지도 시각화 --------------------
-st.subheader("🗺 지도에서 지진 발생 위치 보기")
+st.subheader("지진 발생 위치")
 if not filtered.empty:
     map_data = filtered.rename(columns={'위도': 'latitude', '경도': 'longitude'})
     map_data['발생시각'] = map_data['발생시각'].dt.strftime('%Y-%m-%d %H:%M')
@@ -100,5 +100,5 @@ if not filtered.empty:
         map_style="mapbox://styles/mapbox/light-v9",
         initial_view_state=view_state,
         layers=[layer],
-        tooltip={"text": "📍 {위치}\n규모: {규모}\n깊이: {깊이(km)}km\n🕒 {발생시각}"}
+        tooltip={"text": "{위치}\n규모: {규모}\n깊이: {깊이(km)}km\n{발생시각}"}
     ))
