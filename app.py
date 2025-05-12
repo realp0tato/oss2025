@@ -6,7 +6,7 @@ import numpy as np
 # -------------------- 데이터 로드 --------------------
 @st.cache_data
 def load_data():
-    df = pd.read_excel("/Users/yoonseunghee/Desktop/oss2025/earthquake_data_2020_2025.xlsx", skiprows=2)
+    df = pd.read_excel("earthquake_data_2020_2025.xlsx", skiprows=2)
     df.columns = ['번호', '발생시각', '규모', '깊이(km)', '최대진도', '위도', '경도', '위치', '지도', '상세정보']
     df = df.dropna(subset=['발생시각', '규모', '위도', '경도'])
     df['위도'] = df['위도'].str.replace(' N', '', regex=False).astype(float)
