@@ -46,18 +46,6 @@ filtered = df[
 if selected_regions:
     filtered = filtered[filtered['광역시도'].isin(selected_regions)]
 
-# -------------------- 요약 통계 --------------------
-st.subheader("지진 정보 요약")
-col1, col2, col3 = st.columns(3)
-if not filtered.empty:
-    col1.metric("최대 규모", f"{filtered['규모'].max():.1f}")
-    col2.metric("평균 규모", f"{filtered['규모'].mean():.2f}")
-    col3.metric("발생 건수", len(filtered))
-
-    top_region = filtered['광역시도'].value_counts().idxmax()
-    st.markdown(f"**가장 많이 발생한 지역:** {top_region}")
-else:
-    st.warning("선택한 조건에 해당하는 지진 데이터가 없습니다.")
 
 # -------------------- 규모 변화 라인 차트 --------------------
 st.subheader("지진 규모 변화 추이")
